@@ -71,19 +71,23 @@ Open another terminal:
     npm install
     npm run dev
 
+
+
 ## Environment Variables
 
 Create a `.env` file inside the server folder.
 
-Add the required environment variables:
+Add the following environment variables:
 
     PORT=8000
     MONGO_URI=your_mongodb_connection_string
     JWT_SECRET=your_jwt_secret
-    EMAIL_USER=your_email
-    EMAIL_PASS=your_email_app_password
+    EMAIL=your_email_address
+    EMAIL_PASSWORD=your_email_app_password
 
-Use your actual variable names from the backend code. Never upload real credentials to GitHub.
+Never upload your actual credentials to GitHub.
+
+
 
 ## Future Improvements
 
