@@ -1,0 +1,188 @@
+// import { useEffect, useState } from "react";
+// import API from "../../services/api";
+
+// const TransactionHistory = () => {
+
+//   const [data, setData] = useState([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const res = await API.get("/transaction/history");
+//       setData(res.data);
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   return (
+//     <>
+//       {data.map((item) => (
+//         <div key={item._id}>
+//           <p>{item.type} - ₹{item.amount}</p>
+//         </div>
+//       ))}
+//     </>
+//   );
+// };
+
+// export default TransactionHistory;
+
+
+// import { useEffect, useState } from "react";
+// import API from "../../services/api";
+
+// const TransactionHistory = () => {
+
+//   const [data, setData] = useState([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const res = await API.get("/transaction/history");
+//       setData(res.data);
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   const currentUserId = localStorage.getItem("userId"); // optional (if stored)
+
+//   return (
+//     <>
+//       <h2>Transaction History</h2>
+
+//       {data.map((item) => {
+
+//         // 🟢 Deposit
+//         if (item.type === "deposit") {
+//           return (
+//             <div key={item._id}>
+//               <p>Deposit: ₹{item.amount}</p>
+//             </div>
+//           );
+//         }
+
+//         // 🔴 Sent
+//         if (item.sender?._id === item.user) {
+//           return (
+//             <div key={item._id}>
+//               <p>
+//                 Sent to {item.receiver?.name} - ₹{item.amount}
+//               </p>
+//             </div>
+//           );
+//         }
+
+//         // 🔵 Received
+//         return (
+//           <div key={item._id}>
+//             <p>
+//               Received from {item.sender?.name} - ₹{item.amount}
+//             </p>
+//           </div>
+//         );
+
+//       })}
+
+//     </>
+//   );
+// };
+
+// export default TransactionHistory;
+
+// import { useEffect, useState } from "react";
+// import API from "../../services/api";
+
+// const TransactionHistory = () => {
+
+//   const [data, setData] = useState([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const res = await API.get("/transaction/history");
+//       setData(res.data);
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   const currentUserId = localStorage.getItem("userId");
+
+//   return (
+//     <div className="mt-6 px-4">
+
+//       <div className="glass-card p-6 md:p-8">
+
+//         <h2 className="section-title text-center md:text-left">
+//           Transaction History
+//         </h2>
+
+//         {data.length === 0 ? (
+//           <p className="text-gray-400 text-center text-sm md:text-base">
+//             No transactions found
+//           </p>
+//         ) : (
+//           <div className="space-y-4 mt-4">
+
+//             {data.map((item) => {
+
+//               // 🟢 Deposit
+//               if (item.type === "deposit") {
+//                 return (
+//                   <div
+//                     key={item._id}
+//                     className="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/10"
+//                   >
+//                     <p className="text-sm md:text-base text-gray-200">
+//                       Deposit
+//                     </p>
+//                     <p className="text-green-400 font-semibold">
+//                       +₹{item.amount}
+//                     </p>
+//                   </div>
+//                 );
+//               }
+
+//               // 🔴 Sent
+//               if (item.sender?._id === item.user) {
+//                 return (
+//                   <div
+//                     key={item._id}
+//                     className="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/10"
+//                   >
+//                     <p className="text-sm md:text-base text-gray-200">
+//                       Sent to {item.receiver?.name}
+//                     </p>
+//                     <p className="text-red-400 font-semibold">
+//                       -₹{item.amount}
+//                     </p>
+//                   </div>
+//                 );
+//               }
+
+//               // 🔵 Received
+//               return (
+//                 <div
+//                   key={item._id}
+//                   className="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/10"
+//                 >
+//                   <p className="text-sm md:text-base text-gray-200">
+//                     Received from {item.sender?.name}
+//                   </p>
+//                   <p className="text-blue-400 font-semibold">
+//                     +₹{item.amount}
+//                   </p>
+//                 </div>
+//               );
+
+//             })}
+
+//           </div>
+//         )}
+
+//       </div>
+
+//     </div>
+//   );
+// };
+
+// export default TransactionHistory;

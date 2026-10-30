@@ -1,0 +1,37 @@
+const jwt = require('jsonwebtoken')
+const User = require('../models/user')
+
+const auth = async (req,res,next)=>{
+
+try{
+
+let token = req.headers.authorization
+
+if(!token){
+return res.status(401).json({message:"No token provided"})
+}
+
+token = token.split(" ")[1]
+
+const decoded = jwt.verify(token,process.env.JWT_SECRET)
+
+// 🔥 IMPORTANT
+const user = await User.findById(decoded.id)
+
+//console.log("USER FROM DB:", user) // 👈 ADD THIS
+
+if(!user.isVerified){
+return res.status(403).json({message:"Please verify your account first"})
+}
+
+req.user = user
+
+next()
+
+}catch(error){
+res.status(401).json({message:"Invalid token"})
+}
+
+}
+
+module.exports = auth
